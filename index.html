@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finland</title>
+    <!-- <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-drag: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .box {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100vh;
+            background: var(--i) no-repeat center / cover fixed;
+        }
+
+        .bro {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 500%;
+            width: 100%;
+            transition: 1s;
+            z-index: 2 !important;
+        }
+
+        .big {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 4 !important;
+            background: #03002576;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        .sis {
+            position: absolute;
+            left: 0;
+            transition: .9s;
+            padding: .5rem 0;
+            width: 500%;
+            display: flex;
+            align-items: center;
+            background: #030025;
+        }
+
+        .sis::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: linear-gradient(#030025, transparent);
+        }
+
+        .sis::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: linear-gradient(transparent, #030025);
+        }
+
+        .t {
+            width: calc(100% / 5);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: 1000 2rem cursive;
+            color: aliceblue;
+            text-align: center;
+            text-wrap: wrap;
+        }
+
+        .cont {
+            position: absolute;
+            z-index: 100 !important;
+            left: 50%;
+            translate: -50% -50%;
+            top: 65%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cont button {
+            outline: none;
+            border: none;
+            background: transparent;
+            color: #fff;
+            width: 4rem;
+            transition: .5s;
+            height: 2rem;
+            font-size: 1.3rem;
+            border: 2px solid #fff;
+        }
+
+        .cont button:hover {
+            background: #fff;
+            color: #030025;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="bro">
+            <div class="slide" style="--i: url(fon2.jpeg)"></div>
+            <div class="slide" style="--i: url(fonnew.jpeg)"></div>
+            <div class="slide" style="--i: url(fon4.webp)"></div>
+            <div class="slide" style="--i: url(fon5.jpg)"></div>
+        </div>
+        <div class="big">
+            <div class="sis">
+                <div class="t">
+                    Christmas in
+                    <br>
+                    Finland
+                </div>
+                <div class="t">
+                    Lapland village
+                </div>
+                <div class="t">
+                    Traditions in Christmas
+                </div>
+                <div class="t">
+                    Christmas
+                    <br>
+                    Fairytails
+                </div>
+                <div class="t">
+                    <div class="theend">
+                        THE END
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cont">
+            <button class="l">‹</button>
+            <button class="r">›</button>
+        </div>
+    </div>
+
+    <script>
+        const move = document.querySelector('.bro')
+        const sis = document.querySelector('.sis')
+        const prev = document.querySelector('.l')
+        const next = document.querySelector('.r')
+        let letter = true;
+        let cur = 0;
+        next.onclick = () => {
+            if (letter) {
+                if (cur > -400) {
+                    cur -= 100;
+                    move.style.top = cur + 'vh';
+                    sis.style.left = cur + '%';
+                    letter = false;
+                    setTimeout(() => {
+                        letter = true;
+                    }, 1000);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        prev.onclick = () => {
+            if (letter) {
+                if (cur <= -100) {
+                    cur += 100;
+                    move.style.top = cur + 'vh';
+                    sis.style.left = cur + '%';
+                    letter = false;
+                    setTimeout(() => {
+                        letter = true;
+                    }, 1000);
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } 
+    </script>
+</body>
+
+</html>
